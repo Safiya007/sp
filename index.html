@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suguna K | Portfolio</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#050816;
+      --card:#111827;
+      --text:#ffffff;
+      --sub:#b6b6b6;
+      --main:#00f7ff;
+      --purple:#9b5cff;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:linear-gradient(to right,var(--main),var(--purple));
+      border-radius:50%;
+      filter:blur(180px);
+      opacity:0.2;
+      top:-150px;
+      left:-100px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:linear-gradient(to right,#ff00ff,#00f7ff);
+      border-radius:50%;
+      filter:blur(180px);
+      opacity:0.1;
+      bottom:-150px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    h2{
+      font-size:3rem;
+      margin-bottom:40px;
+      text-align:center;
+      background:linear-gradient(to right,#00f7ff,#9b5cff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    p{
+      color:var(--sub);
+      line-height:1.8;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+
+    nav h1{
+      color:white;
+      font-size:2rem;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:var(--main);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .hero-text h3{
+      font-size:1.3rem;
+      color:var(--main);
+      margin-bottom:15px;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 span{
+      background:linear-gradient(to right,#00f7ff,#9b5cff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text p{
+      max-width:700px;
+      margin-bottom:30px;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 30px;
+      border:none;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.4s;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(to right,#00f7ff,#9b5cff);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 25px rgba(0,247,255,0.5);
+    }
+
+    .btn-outline{
+      border:2px solid var(--main);
+      color:white;
+    }
+
+    .btn-outline:hover{
+      background:var(--main);
+      color:black;
+    }
+
+    /* 3D CARD */
+
+    .hero-card{
+      width:350px;
+      height:350px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:30px;
+      backdrop-filter:blur(20px);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      transform-style:preserve-3d;
+      animation:float 5s ease-in-out infinite;
+      box-shadow:0 0 40px rgba(0,247,255,0.2);
+    }
+
+    .hero-card::before{
+      content:'S';
+      position:absolute;
+      font-size:10rem;
+      font-weight:800;
+      color:rgba(255,255,255,0.06);
+    }
+
+    .hero-card img{
+      width:180px;
+      z-index:1;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-20px);
+      }
+    }
+
+    /* STATS */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:30px;
+      margin-top:80px;
+    }
+
+    .stat-box{
+      background:rgba(255,255,255,0.05);
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(0,247,255,0.2);
+    }
+
+    .stat-box h3{
+      font-size:3rem;
+      color:var(--main);
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-card{
+      background:rgba(255,255,255,0.05);
+      padding:40px;
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,0.1);
+      transition:0.4s;
+    }
+
+    .about-card:hover{
+      transform:translateY(-10px);
+    }
+
+    /* SKILLS */
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .skill-card{
+      background:rgba(255,255,255,0.05);
+      padding:40px 30px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px) rotateX(5deg);
+      box-shadow:0 0 25px rgba(0,247,255,0.2);
+    }
+
+    .skill-card i{
+      font-size:3rem;
+      color:var(--main);
+      margin-bottom:20px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:40px;
+    }
+
+    .project-card{
+      background:rgba(255,255,255,0.05);
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.5s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .project-card:hover{
+      transform:translateY(-15px);
+      box-shadow:0 0 35px rgba(0,247,255,0.3);
+    }
+
+    .project-content{
+      padding:30px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+      color:var(--main);
+    }
+
+    .tags{
+      margin-top:20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tags span{
+      padding:8px 15px;
+      background:rgba(0,247,255,0.1);
+      border-radius:30px;
+      font-size:0.9rem;
+      color:var(--main);
+    }
+
+    /* TIMELINE */
+
+    .timeline{
+      position:relative;
+      max-width:1000px;
+      margin:auto;
+    }
+
+    .timeline::after{
+      content:'';
+      position:absolute;
+      width:4px;
+      background:var(--main);
+      top:0;
+      bottom:0;
+      left:50%;
+      margin-left:-2px;
+    }
+
+    .timeline-box{
+      padding:20px 40px;
+      position:relative;
+      width:50%;
+    }
+
+    .timeline-box::after{
+      content:'';
+      position:absolute;
+      width:25px;
+      height:25px;
+      background:var(--main);
+      border-radius:50%;
+      top:30px;
+      right:-13px;
+    }
+
+    .left{
+      left:0;
+    }
+
+    .right{
+      left:50%;
+    }
+
+    .right::after{
+      left:-12px;
+    }
+
+    .timeline-content{
+      background:rgba(255,255,255,0.05);
+      padding:30px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    /* CONTACT */
+
+    .contact-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:50px;
+    }
+
+    .contact-form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      padding:18px;
+      background:rgba(255,255,255,0.05);
+      border:none;
+      border-radius:15px;
+      color:white;
+      outline:none;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-form textarea{
+      height:150px;
+      resize:none;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:var(--sub);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .timeline::after{
+        left:20px;
+      }
+
+      .timeline-box{
+        width:100%;
+        padding-left:70px;
+        padding-right:20px;
+      }
+
+      .timeline-box::after{
+        left:8px;
+      }
+
+      .right{
+        left:0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <h1>Suguna.K</h1>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text" data-aos="fade-right">
+
+      <h3>Available for Opportunities</h3>
+
+      <h1>
+        Hi, I'm <span>Suguna K</span><br>
+        Software Developer
+      </h1>
+
+      <p>
+        Motivated developer with expertise in Python, Java & Data Science.
+        Passionate about machine learning, data structures, and building
+        real-world applications that make an impact.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Get In Touch
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-card" data-aos="zoom-in">
+      <h1 style="font-size:7rem; z-index:1;">S</h1>
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section>
+
+    <div class="stats">
+
+      <div class="stat-box" data-aos="fade-up">
+        <h3>8.4</h3>
+        <p>CGPA</p>
+      </div>
+
+      <div class="stat-box" data-aos="fade-up">
+        <h3>2</h3>
+        <p>Internships</p>
+      </div>
+
+      <div class="stat-box" data-aos="fade-up">
+        <h3>3</h3>
+        <p>Certifications</p>
+      </div>
+
+      <div class="stat-box" data-aos="fade-up">
+        <h3>5+</h3>
+        <p>Awards</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2>// About Me</h2>
+
+    <div class="about">
+
+      <div class="about-card" data-aos="fade-right">
+        <h3 style="font-size:2rem; margin-bottom:20px;">
+          Turning Data Into Decisions
+        </h3>
+
+        <p>
+          I'm a B.Tech Information Technology student at
+          Dhanalakshmi Srinivasan Engineering College, Perambalur,
+          with a strong passion for software development and data science.
+        </p>
+
+        <br>
+
+        <p>
+          My journey spans machine learning, data analysis,
+          and full-stack fundamentals with hands-on experience
+          through internships at Codebind Technologies and
+          NLC India Limited.
+        </p>
+      </div>
+
+      <div class="about-card" data-aos="fade-left">
+
+        <p>📍 Tamil Nadu 🇮🇳</p><br>
+        <p>🎓 B.Tech IT</p><br>
+        <p>💼 Open to Work</p><br>
+        <p>🤖 ML Enthusiast</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h2>// Technical Skills</h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card" data-aos="zoom-in">
+        <i class="fa-brands fa-python"></i>
+        <h3>Python</h3>
+        <p>ML, automation & data analysis</p>
+      </div>
+
+      <div class="skill-card" data-aos="zoom-in">
+        <i class="fa-brands fa-java"></i>
+        <h3>Java</h3>
+        <p>OOP & problem solving</p>
+      </div>
+
+      <div class="skill-card" data-aos="zoom-in">
+        <i class="fa-solid fa-database"></i>
+        <h3>SQL</h3>
+        <p>Database management</p>
+      </div>
+
+      <div class="skill-card" data-aos="zoom-in">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Data Science</h3>
+        <p>Pandas, NumPy, TensorFlow</p>
+      </div>
+
+      <div class="skill-card" data-aos="zoom-in">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Machine Learning</h3>
+        <p>Decision Tree, KNN, Random Forest</p>
+      </div>
+
+      <div class="skill-card" data-aos="zoom-in">
+        <i class="fa-solid fa-code"></i>
+        <h3>Web Development</h3>
+        <p>HTML, CSS & JavaScript</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <h2>// Projects</h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card" data-aos="fade-up">
+
+        <div class="project-content">
+
+          <h3>🌾 Crop Prediction Model</h3>
+
+          <p>
+            Machine learning model that predicts suitable crops
+            based on soil composition and environmental conditions.
+          </p>
+
+          <div class="tags">
+            <span>Python</span>
+            <span>Scikit-learn</span>
+            <span>Decision Tree</span>
+            <span>Random Forest</span>
+            <span>KNN</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project-card" data-aos="fade-up">
+
+        <div class="project-content">
+
+          <h3>📊 Data Transformation to Excel</h3>
+
+          <p>
+            Tool that converts TXT, CSV & JSON data into
+            structured Excel files with cleaning and formatting.
+          </p>
+
+          <div class="tags">
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>OpenPyXL</span>
+            <span>XlsxWriter</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+
+    <h2>// Experience</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-box left" data-aos="fade-right">
+        <div class="timeline-content">
+          <h3>Data Science Intern</h3>
+          <p>NLC India Limited</p>
+          <br>
+          <p>
+            Worked on industrial datasets, analytics,
+            and data science workflows.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-box right" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>AI & ML Intern</h3>
+          <p>Codebind Technologies</p>
+          <br>
+          <p>
+            Developed machine learning models using
+            Python-based AI frameworks.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-box left" data-aos="fade-right">
+        <div class="timeline-content">
+          <h3>Tech Brainiac Symposium</h3>
+          <p>2nd Prize — 2024</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+
+    <h2>// Education</h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3>B.Tech IT</h3>
+        <p>Dhanalakshmi Srinivasan Engineering College</p>
+        <br>
+        <h2 style="font-size:2rem;">8.4 CGPA</h2>
+      </div>
+
+      <div class="skill-card">
+        <h3>HSC</h3>
+        <p>Sathya Saai Matric Hr Sec School</p>
+        <br>
+        <h2 style="font-size:2rem;">77%</h2>
+      </div>
+
+      <div class="skill-card">
+        <h3>SSLC</h3>
+        <p>Sathya Saai Matric Hr Sec School</p>
+        <br>
+        <h2 style="font-size:2rem;">Passed</h2>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2>// Let's Connect</h2>
+
+    <div class="contact-container">
+
+      <div data-aos="fade-right">
+
+        <p>
+          I'm actively looking for opportunities in software
+          development, data science, and machine learning.
+        </p>
+
+        <br><br>
+
+        <p>✉️ sugunakaruppaiya08@gmail.com</p>
+        <br>
+        <p>📱 +91 8148672959</p>
+        <br>
+        <p>📍 Cuddalore, Tamil Nadu, India</p>
+
+        <br><br>
+
+        <div style="display:flex; gap:20px; font-size:2rem;">
+
+          <a href="#" style="color:white;">
+            <i class="fab fa-linkedin"></i>
+          </a>
+
+          <a href="#" style="color:white;">
+            <i class="fab fa-github"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <form class="contact-form" data-aos="fade-left">
+
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Your Email">
+
+        <input type="text" placeholder="Subject">
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button class="btn btn-primary">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Suguna K — Built with ❤️ in Tamil Nadu, India
+  </footer>
+
+  <!-- AOS -->
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration:1200,
+      once:false
+    });
+  </script>
+
+</body>
+</html>
